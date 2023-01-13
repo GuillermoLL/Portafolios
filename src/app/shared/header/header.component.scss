@@ -1,0 +1,25 @@
+@import '../../../variables.scss';
+
+a {
+  text-decoration: none;
+}
+
+.header-animation-fadein {
+  animation: show-bg-navbar-in 0.5s forwards;
+  animation-play-state: running;
+}
+
+@keyframes show-bg-navbar-in {
+  0% {
+    background-color: transparent;
+  }
+
+  100% {
+    background-color: $header-bg-color;
+  }
+}
+
+bg-header{
+  background-color: $header-bg-color;
+}
+

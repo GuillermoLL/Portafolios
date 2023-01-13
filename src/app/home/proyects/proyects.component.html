@@ -1,0 +1,26 @@
+<div class="text-center">
+  <h3>Proyectos</h3>
+  <p>Algunos de mis proyectos</p>
+</div>
+<div class="proyects">
+  <div *ngFor="let proyect of proyects" class="card text-bg-dark rounded-0 border border-0">
+    <img src="./assets/no-img.png" class="card-img img-fluid align-content-center mx-auto" alt="{{proyect.img === '' ? 'no-img' : proyect.img}}">
+    <div id="filter" class="card-img-overlay text-center">
+      <h4 class="card-title text-capitalize">{{proyect.name}} - {{proyect.created_at}}</h4>
+      <p class="card-text">{{proyect.description}}</p>
+      <p class="card-text text-capitalize">
+        <b>Frameworks</b><br>
+        <ng-container *ngFor="let topic of proyect.topics">
+          {{topic}}
+        </ng-container>
+      </p>
+      <div>
+        <b class="card-text">Links:</b>
+        <div class="row">
+          <a href="{{proyect.homepage}}" class="card-text text-decoration-none text-secondary-light">{{proyect.homepage}}</a>
+          <a href="{{proyect.html_url}}" class="card-text text-decoration-none text-secondary-light">{{proyect.html_url}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+#filter{
+  background: rgba(73, 73, 155, 0.3);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+.proyects{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%,20rem), 1fr));
+}
+
+a {
+  font-size: 13px;
+}

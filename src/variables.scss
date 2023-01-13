@@ -1,0 +1,29 @@
+$body-color: white;
+$link-color: $body-color;
+
+$primary: #6a1b9a;
+$primary-light: #9c4dcc;
+$primary-dark: #38006b;
+$secondary:#80deea;
+$secondary-light: #b4ffff;
+$secondary-dark: #4bacb8;
+
+$header-bg-color: rgba($primary-dark, 0.8);
+
+$card-border-radius: 0px;
+
+$navbar-padding-y: 0em;
+$navbar-dark-color: $body-color;
+$navbar-dark-hover-color: $secondary-dark;
+$navbar-dark-active-color: $secondary-light;
+
+$theme-colors:(
+  'primary': $primary,
+  'primary-light': $primary-light,
+  'primary-dark': $primary-dark,
+  'secondary': $secondary,
+  'secondary-light': $secondary-light,
+  'secondary-dark': $secondary-dark,
+)!default;
+
+
