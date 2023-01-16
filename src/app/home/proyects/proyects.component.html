@@ -4,7 +4,7 @@
 </div>
 <div class="proyects">
   <div *ngFor="let proyect of proyects" class="card text-bg-dark rounded-0 border border-0">
-    <img src="./assets/no-img.png" class="card-img img-fluid align-content-center mx-auto" alt="{{proyect.img === '' ? 'no-img' : proyect.img}}">
+    <img src="{{proyect.img === '' ? './assets/no-img.png' : proyect.img}}" class="card-img img-fluid align-content-center mx-auto" alt="{{proyect.img === '' ? 'no-img' : proyect.img}}">
     <!-- <img src="https://api.github.com/repos/GuillermoLL/portafolios/contents/src/assets/bg_init.jpg"> -->
     <div id="filter" class="card-img-overlay text-center">
       <h4 class="card-title text-capitalize">{{proyect.name}} - {{proyect.created_at}}</h4>

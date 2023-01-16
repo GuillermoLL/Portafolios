@@ -21,9 +21,10 @@ export class ProyectsService {
         data.forEach((proyect: Proyect) =>
           proyects.push({
             ...proyect,
-            img: '',
+            img: `https://raw.githubusercontent.com/GuillermoLL/${proyect.name}/main/src/assets/bg_init.jpg`,
             created_at: new Date(proyect.created_at).getFullYear().toString()
           }))
+        console.log(proyects)
         return proyects;
       }))
   }
