@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from "@angular/common/http";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Components
 import { HomeComponent } from './home.component';
@@ -25,7 +26,8 @@ import { ContactComponent } from './contact/contact.component';
   imports: [
     CommonModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule, ReactiveFormsModule
   ],
   exports: [
     HomeComponent

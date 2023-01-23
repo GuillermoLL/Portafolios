@@ -2,35 +2,62 @@
   <div id="filter">
     <div class="container position-relative top-50 start-0 translate-middle-y">
       <!-- Cabecera -->
-      <div class="">
+      <div>
         <h2>Contacto</h2>
         <p>hazme llegar tu comentario, opinón, oferta ...</p>
       </div>
 
       <!-- Formulario de contacto -->
-      <form  action="https://formsubmit.co/0b966f89f57842e05500e127931773e8" method="POST" class="col-lg-6 border border-primary rounded p-3">
+      <form id="form" class="col-lg-6 border border-primary rounded p-3 needs-validation" [formGroup]="contactForm" (ngSubmit)="onSubmit($event)">
         <div>
+          <div class="d-flex my-2">
 
-          <!-- Nombre y Telefono -->
-          <div>
-            <input type="text" [placeholder]="'Nombre'" name="name" class="col-5" required>
-            <input type="text" [placeholder]="'Teléfono'" name="telefono" class="col-5" required>
+            <!-- Nombre -->
+            <div>
+              <input type="text"  placeholder="Nombre" formControlName="name" name="name" class="form-control"
+                [ngClass]="this.contactForm.get('name')?.dirty ? (this.contactForm.get('name')?.valid ? 'is-valid':'is-invalid') : ''">
+              <span class="invalid-feedback" *ngIf="this.contactForm.get('name')?.hasError('required')">Este campo no puede estar vacio</span>
+            </div>
+
+            <!-- Telefono -->
+            <div class="ms-2">
+              <input type="text" [placeholder]="'Teléfono'" formControlName="phone" maxlength="9" name="phone" class="form-control"
+                [ngClass]="this.contactForm.get('phone')?.dirty ? (this.contactForm.get('phone')?.valid ? 'is-valid':'is-invalid') : ''">
+              <span class="invalid-feedback" *ngIf="this.contactForm.get('phone')?.hasError('required')">Este campo no puede estar vacio</span>
+              <span class="invalid-feedback" *ngIf="this.contactForm.get('phone')?.hasError('minlength')">Deben de haber 9 caracteres</span>
+              <span class="invalid-feedback" *ngIf="this.contactForm.get('phone')?.hasError('pattern')">Debe de haber solo números</span>
+            </div>
           </div>
 
           <!-- Email-->
-          <input type="email" [placeholder]="'Email'" name="email" class="col-10" required>
+          <div>
+            <input type="email" [placeholder]="'Email'" formControlName="email" name="email" class="form-control my-2"
+              [ngClass]="this.contactForm.get('email')?.dirty ? (this.contactForm.get('email')?.valid ? 'is-valid':'is-invalid') : ''">
+            <span class="invalid-feedback" *ngIf="this.contactForm.get('email')?.hasError('required')">Este campo no puede estar vacio</span>
+            <span class="invalid-feedback" *ngIf="this.contactForm.get('email')?.hasError('email')">Debe de ser un email válido </span>
+          </div>
         </div>
 
         <!-- Mensaje-->
-        <textarea class="col-10" [placeholder]="'Escriba aqui su mensaje ...'" name="message" required></textarea>
+        <div>
+          <textarea [placeholder]="'Escriba aqui su mensaje ...'" formControlName="message" name="message" class="form-control my-2 text-primary-light" rows="5"
+            [ngClass]="this.contactForm.get('message')?.dirty ? (this.contactForm.get('message')?.valid ? 'is-valid':'is-invalid') : ''">
+          </textarea>
+          <span class="invalid-feedback" *ngIf="this.contactForm.get('message')?.hasError('required')">Este campo no puede estar vacio</span>
+        </div>
 
         <!-- Boton Enviar -->
-        <div class="col-12">
-          <input type="submit" value="Enviar" class="btn btn-primary-light btn-outline-secondary-light">
-          <input type="hidden" name="_subject" value="Portafolios - Nuevo mensaje">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="https://guillermoll.github.io/portafolios"/>
+        <div class="d-flex">
+          <button type="submit"
+            class="btn btn-primary-light"
+            [ngClass]="this.contactForm.valid && !this.sending ? 'btn-outline-secondary-light' : '' "
+            [disabled]="!this.contactForm.valid || this.sending"
+          >
+            <span>Enviar</span>
+          </button>
+          <div *ngIf="this.sending" class="spinner-border text-primary-light align-self-center ms-2">
+            <span class="visually-hidden">Loading...</span>
+          </div>
         </div>
       </form>
     </div>
